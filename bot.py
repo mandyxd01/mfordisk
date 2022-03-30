@@ -71,7 +71,7 @@ async def hello(event):
         # url to change 
         for i in urls_to_change:
             link = regrex_pattern.sub(r'' , i)
-            print(link)
+            #print(link)
             url  = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
             param = {
                 'token': mdisk_api,
