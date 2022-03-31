@@ -295,7 +295,7 @@ async def hello(event):
             
             
  ############ FORWARDER #################
-@client.on(events.NewMessage(incoming=True, chats=source))
+@client.on(events.NewMessage(chats=source))
 async def _(event):
     for i in frzz:
         try:
