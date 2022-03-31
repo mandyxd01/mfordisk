@@ -43,6 +43,11 @@ onchat = [-1001581007387,-1001660122872,-1001717214543,-1001523206841,-100134201
 onsend_to = -1001715973738
 
 
+#forward here
+source = [-1001384606870,-1001188182423,-1001619891164,-1001774716447,-1001715973738]
+frzz = [-1001656381315,-1001689708493,-1001773024200]
+
+
 @client.on(events.NewMessage(chats=indchats))
 async def hello(event):
     # chat = await event.get_chat()
@@ -287,6 +292,19 @@ async def hello(event):
             await client.send_message(onsend_to , caption)
 
 
+            
+            
+ ############ FORWARDER #################
+@client.on(events.NewMessage(incoming=True, chats=source))
+async def _(event):
+    for i in frzz:
+        try:
+            await client.send_message(
+                i,
+                event.message
+            )
+        except Exception as e:
+            print(e)
     
 print("Bot has been deployed.!")
 
