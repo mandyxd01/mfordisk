@@ -48,7 +48,7 @@ black = ["🙈ᴍᴏʀᴇ ғᴀsᴛ ᴊᴏɪɴ ɢᴜʏs👇","Share and help us.
 
 #forward here
 source = deschat
-frzz = [-1001656381315,-1001773024200]
+frzz = [-1001656381315]
 
 
 @client.on(events.NewMessage(chats=indchats))
@@ -353,11 +353,11 @@ async def hello(event):
         caption = caption + "\n" + footer
         if media:
             await client.send_file(frzz[0] ,file=media , caption=caption)
-            await client.send_file(frzz[1] ,file=media , caption=caption)
+            
             os.remove(media)
         else:
             await client.send_message(frzz[0] , caption)
-            await client.send_message(frzz[1] , caption)
+            
 
     
 print("Bot has been deployed.!")
