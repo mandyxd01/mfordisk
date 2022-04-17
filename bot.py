@@ -52,7 +52,7 @@ frzz = [-1001656381315]
 
 
 @client.on(events.NewMessage(chats=indchats))
-async def hello(event):
+async def hello1(event):
     # chat = await event.get_chat()
     caption = event.message.message
     urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
@@ -104,7 +104,7 @@ async def hello(event):
 #################webseries############
 
 @client.on(events.NewMessage(chats=webchat))
-async def hello(event):
+async def hello2(event):
     # chat = await event.get_chat()
     caption = event.message.message
     urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
@@ -155,7 +155,7 @@ async def hello(event):
 
 ############# DESI #################
 @client.on(events.NewMessage(chats=deschat))
-async def hello(event):
+async def hello3(event):
     # chat = await event.get_chat()
     caption = event.message.message
     urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
@@ -206,7 +206,7 @@ async def hello(event):
 ############ TANGO ###############
 
 @client.on(events.NewMessage(chats=tanchat))
-async def hello(event):
+async def hello4(event):
     # chat = await event.get_chat()
     caption = event.message.message
     urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
@@ -256,7 +256,7 @@ async def hello(event):
 
 ########### ONLYFANS #####################
 @client.on(events.NewMessage(chats=onchat))
-async def hello(event):
+async def hello5(event):
     # chat = await event.get_chat()
     caption = event.message.message
     urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
@@ -309,7 +309,7 @@ async def hello(event):
             
  ############ FORWARDER #################
 @client.on(events.NewMessage(chats=source))
-async def hello(event):
+async def hello6(event):
     # chat = await event.get_chat()
     caption = event.message.message
     urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
