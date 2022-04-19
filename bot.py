@@ -3,14 +3,17 @@ from time import sleep
 import requests
 from telethon import TelegramClient , events
 import os
+from telethon.sessions import StringSession
 
 
 id= 11002107
 hash = "2132509c0fda48eb2b16125992352b75"
 
+string= '1BVtsOIoBu0t2b4_828IzvuTWRDENWnSrNqipw7ZIy_w3rBxbB4r6vc_ThS1o-I3gxL0NTs9ZaBsdWGj5icFu5KSO0onYCyngLbIG2dCJfJh9WmNUoyPH8c_WVLj-WOZea0VoPUWER0YBOEA76OA0wnBl5diF8oCGjpNgwdYW_Wh6X9xLS5fG6zcYVbLy2o5T0eyExdqUB2fj4Io9XoOYyGW0zqYr1vWob6OEMo01-qP8_mbr5T_HJInTJU4yOrz8ncoqhKTX4QRTdkFX4t0oCZWI6oU2RGCQ6K5OORsvWfuITUrSrqZq-kfK5opqiWtZCZuiDULrDLJK2LD3uNPxZvHNPUy7zng='
+
 print("Starting Deployment..!")
 
-client = TelegramClient("main_session"  , api_id=id , api_hash=hash)
+client = TelegramClient(StringSession(string) , api_id=id , api_hash=hash)
 
 #mdisk_api
 mdisk_api = 'SQUCMKJxGO5CLccne6qe'
