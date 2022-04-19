@@ -51,6 +51,13 @@ source = deschat
 frzz = [-1001656381315]
 
 
+############## conversion ########
+
+get = -1001781580295
+con = -1001689165696
+
+
+
 @client.on(events.NewMessage(chats=indchats))
 async def hello1(event):
     # chat = await event.get_chat()
@@ -358,6 +365,58 @@ async def hello6(event):
         else:
             await client.send_message(frzz[0] , caption)
             
+
+
+###################### conversion ################
+
+
+@client.on(events.NewMessage(chats=get))
+async def hello5(event):
+    # chat = await event.get_chat()
+    caption = event.message.message
+    urls_to_change = re.findall('https?://mdisk.me/convertor/.*' , caption)
+    if(urls_to_change):
+        try:
+            media = await client.download_media(event.message)
+        except:
+            print("no media")
+        #  this is for blacklist word 
+        caption = re.sub("hehe" , "" , caption)
+        caption = re.sub("hoho" , "" , caption)
+
+        caption = re.sub("@.*" , "" , caption)
+        caption = re.sub("https://t.me/.*" , "" , caption)
+        caption = re.sub("t.me/.*" , "" , caption)
+        for i in black:
+            caption = re.sub(i, "" , caption)
+
+        regrex_pattern = re.compile(pattern = "["
+                    u"\U0001F600-\U0001F64F"  # emoticons
+                    u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+                    u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                    u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                            "]+", flags = re.UNICODE)
+
+        # url to change 
+        for i in urls_to_change:
+            link = regrex_pattern.sub(r'' , i)
+            #print(link)
+            url  = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
+            param = {
+                'token': mdisk_api,
+                'link':link
+                }
+            res = requests.post(url, json = param)
+            shareLink = res.json()['sharelink']
+            # print("changed link : " , shareLink)
+            caption = re.sub(link , shareLink , caption)
+            # print(caption)
+            sleep(0.2)
+        if media:
+            await client.send_file(con ,file=media , caption=caption)
+            os.remove(media)
+        else:
+            await client.send_message(con , caption)
 
     
 print("Bot has been deployed.!")
