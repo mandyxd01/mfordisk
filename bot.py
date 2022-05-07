@@ -441,7 +441,7 @@ async def hello1(event):
             # print(caption)
             sleep(0.2)
         caption = caption + "\n"
-        for i in chats_to_send:
+        for i in std:
             if media:
                 await client.send_file(std,file=media , caption=caption)
                 os.remove(media)
