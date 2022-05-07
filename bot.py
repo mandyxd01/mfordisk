@@ -443,10 +443,10 @@ async def hello1(event):
         caption = caption + "\n"
         for i in std:
             if media:
-                await client.send_file(std,file=media , caption=caption)
+                await client.send_file(i,file=media , caption=caption)
                 os.remove(media)
             else:
-                await client.send_message(std, caption)
+                await client.send_message(i, caption)
             
     
 print("Bot has been deployed.!")
