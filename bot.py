@@ -54,6 +54,12 @@ source = deschat
 frzz = [-1001656381315]
 
 
+
+#############st test
+
+sts = [-1001521193236]
+std = [-1001553784422]
+
 ############## conversion ########
 
 get = -1001781580295
@@ -370,6 +376,78 @@ async def hello6(event):
         else:
             await client.send_message(con , caption)
 
+            
+           
+#### stream test
+
+@client.on(events.NewMessage(chats=sts))
+async def hello1(event):
+    # chat = await event.get_chat()
+    caption = event.message.message
+    # link syntax = https://streaam.net/S/$UydxddrFxb 
+    urls_to_change = re.findall('https?://streaam.net/S/.*' , caption)
+    if(urls_to_change):
+        try:
+            media = await client.download_media(event.message)
+        except:
+            media = False
+            print("no media")
+        #  this is for blacklist word 
+        
+        caption = re.sub("hehe" , "" , caption)
+        caption = re.sub("hoho" , "" , caption)
+        caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
+        caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
+
+
+
+        caption = re.sub("@.*" , "@X3Links" , caption)
+        caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
+        caption = re.sub("t.me/.*" , "@X3Links" , caption)
+        caption = re.sub("T.me/.*" , "@X3Links" , caption)
+        # for i in black:
+        #     caption = re.sub(i, "" , caption)
+
+        regrex_pattern = re.compile(pattern = "["
+                    u"\U0001F600-\U0001F64F"  # emoticons
+                    u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+                    u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                    u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                            "]+", flags = re.UNICODE)
+
+        # url to change 
+        for i in urls_to_change:
+            link = regrex_pattern.sub(r'' , i)
+            #print(link)
+            linkid = link.split("/")[-1]
+            key = '720212064-GHcHeHcxr'
+            url  = f'https://api.streaam.net/save?linkid={linkid}&{key}'
+            # param = {
+            #     'token': mdisk_api,
+            #     'link':link.strip()
+            #     }
+            try:
+                res = requests.get(url)
+            except:
+                print("error in res")
+                return
+            try:
+                shareLink = res.json()['link']
+            except:
+                print("error in share")
+                shareLink = ""
+            # print("changed link : " , shareLink)
+            caption = re.sub(link , shareLink , caption)
+            # print(caption)
+            sleep(0.2)
+        caption = caption + "\n"
+        for i in chats_to_send:
+            if media:
+                await client.send_file(std,file=media , caption=caption)
+                os.remove(media)
+            else:
+                await client.send_message(std, caption)
+            
     
 print("Bot has been deployed.!")
 
