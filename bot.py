@@ -9,11 +9,9 @@ from telethon.sessions import StringSession
 id= 11002107
 hash = "2132509c0fda48eb2b16125992352b75"
 
-string= '1BVtsOIoBu0t2b4_828IzvuTWRDENWnSrNqipw7ZIy_w3rBxbB4r6vc_ThS1o-I3gxL0NTs9ZaBsdWGj5icFu5KSO0onYCyngLbIG2dCJfJh9WmNUoyPH8c_WVLj-WOZea0VoPUWER0YBOEA76OA0wnBl5diF8oCGjpNgwdYW_Wh6X9xLS5fG6zcYVbLy2o5T0eyExdqUB2fj4Io9XoOYyGW0zqYr1vWob6OEMo01-qP8_mbr5T_HJInTJU4yOrz8ncoqhKTX4QRTdkFX4t0oCZWI6oU2RGCQ6K5OORsvWfuITUrSrqZq-kfK5opqiWtZCZuiDULrDLJK2LD3uNPxZvHNPUy7zng='
-
 print("Starting Deployment..!")
 
-client = TelegramClient(StringSession(string) , api_id=id , api_hash=hash)
+client = TelegramClient("mainsession" , api_id=id , api_hash=hash)
  
 #mdisk_api
 mdisk_api = 'SQUCMKJxGO5CLccne6qe'
@@ -63,6 +61,7 @@ async def hello1(event):
     caption = event.message.message
     # link syntax = https://streaam.net/S/$UydxddrFxb 
     urls_to_change = re.findall('https?://streaam.net/S/.*' , caption)
+    # print(urls_to_change)
     if(urls_to_change):
         try:
             media = await client.download_media(event.message)
@@ -76,14 +75,13 @@ async def hello1(event):
         caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
         caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
 
-
-
         caption = re.sub("@.*" , "@X3Links" , caption)
         caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
         caption = re.sub("t.me/.*" , "@X3Links" , caption)
         caption = re.sub("T.me/.*" , "@X3Links" , caption)
         for i in black:
             caption = re.sub(i, "" , caption)
+        
 
         regrex_pattern = re.compile(pattern = "["
                     u"\U0001F600-\U0001F64F"  # emoticons
@@ -97,10 +95,10 @@ async def hello1(event):
             link = regrex_pattern.sub(r'' , i)
 #             print(link)
             linkid = link.split("/")[-1]
-#             print(linkid)
+            # print(linkid)
             key = sapi
             url  = f'https://api.streaam.net/save?linkid={linkid}&key={key}'
-            print(url)
+            # print(url)
             # param = {
             #     'token': mdisk_api,
             #     'link':link.strip()
@@ -115,16 +113,16 @@ async def hello1(event):
             except:
                 print("error in share")
                 shareLink = ""
-#             print("changed link : " , shareLink)
-            caption = re.sub(link , shareLink , caption)
-#             print(caption)
-            sleep(0.2)
+            print("changed link : " , shareLink)
+            caption = re.sub(re.escape(i) , shareLink , caption)
+            # print(caption)
+            # sleep(0.2)
         caption = caption + "\n"
         if media:
             await client.send_file(indsend_to,file=media , caption=caption)
             os.remove(media)
         else:
-            await client.send_message(indsend_to, caption)
+            await client.send_message(indsend_to, message=caption)
 
 
 
@@ -137,6 +135,7 @@ async def hello1(event):
     caption = event.message.message
     # link syntax = https://streaam.net/S/$UydxddrFxb 
     urls_to_change = re.findall('https?://streaam.net/S/.*' , caption)
+    # print(urls_to_change)
     if(urls_to_change):
         try:
             media = await client.download_media(event.message)
@@ -150,14 +149,13 @@ async def hello1(event):
         caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
         caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
 
-
-
         caption = re.sub("@.*" , "@X3Links" , caption)
         caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
         caption = re.sub("t.me/.*" , "@X3Links" , caption)
         caption = re.sub("T.me/.*" , "@X3Links" , caption)
         for i in black:
             caption = re.sub(i, "" , caption)
+        
 
         regrex_pattern = re.compile(pattern = "["
                     u"\U0001F600-\U0001F64F"  # emoticons
@@ -169,12 +167,12 @@ async def hello1(event):
         # url to change 
         for i in urls_to_change:
             link = regrex_pattern.sub(r'' , i)
-            # print(link)
+#             print(link)
             linkid = link.split("/")[-1]
             # print(linkid)
             key = sapi
             url  = f'https://api.streaam.net/save?linkid={linkid}&key={key}'
-            print(url)
+            # print(url)
             # param = {
             #     'token': mdisk_api,
             #     'link':link.strip()
@@ -189,10 +187,10 @@ async def hello1(event):
             except:
                 print("error in share")
                 shareLink = ""
-            # print("changed link : " , shareLink)
-            caption = re.sub(link , shareLink , caption)
+            print("changed link : " , shareLink)
+            caption = re.sub(re.escape(i) , shareLink , caption)
             # print(caption)
-            sleep(0.2)
+            # sleep(0.2)
         caption = caption + "\n"
         if media:
             await client.send_file(websend_to,file=media , caption=caption)
@@ -208,6 +206,7 @@ async def hello1(event):
     caption = event.message.message
     # link syntax = https://streaam.net/S/$UydxddrFxb 
     urls_to_change = re.findall('https?://streaam.net/S/.*' , caption)
+    # print(urls_to_change)
     if(urls_to_change):
         try:
             media = await client.download_media(event.message)
@@ -221,14 +220,13 @@ async def hello1(event):
         caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
         caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
 
-
-
         caption = re.sub("@.*" , "@X3Links" , caption)
         caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
         caption = re.sub("t.me/.*" , "@X3Links" , caption)
         caption = re.sub("T.me/.*" , "@X3Links" , caption)
         for i in black:
             caption = re.sub(i, "" , caption)
+        
 
         regrex_pattern = re.compile(pattern = "["
                     u"\U0001F600-\U0001F64F"  # emoticons
@@ -240,12 +238,12 @@ async def hello1(event):
         # url to change 
         for i in urls_to_change:
             link = regrex_pattern.sub(r'' , i)
-            # print(link)
+#             print(link)
             linkid = link.split("/")[-1]
             # print(linkid)
             key = sapi
             url  = f'https://api.streaam.net/save?linkid={linkid}&key={key}'
-            print(url)
+            # print(url)
             # param = {
             #     'token': mdisk_api,
             #     'link':link.strip()
@@ -260,10 +258,10 @@ async def hello1(event):
             except:
                 print("error in share")
                 shareLink = ""
-            # print("changed link : " , shareLink)
-            caption = re.sub(link , shareLink , caption)
+            print("changed link : " , shareLink)
+            caption = re.sub(re.escape(i) , shareLink , caption)
             # print(caption)
-            sleep(0.2)
+            # sleep(0.2)
         caption = caption + "\n"
         for i in lk:
             if media:
