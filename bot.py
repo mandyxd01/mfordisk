@@ -75,10 +75,10 @@ async def hello1(event):
         caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
         caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
 
-        caption = re.sub("@.*" , "@X3Links" , caption)
-        caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
-        caption = re.sub("t.me/.*" , "@X3Links" , caption)
-        caption = re.sub("T.me/.*" , "@X3Links" , caption)
+        caption = re.sub("@.*" , "" , caption)
+        caption = re.sub("https://t.me/.*" , "" , caption)
+        caption = re.sub("t.me/.*" , "" , caption)
+        caption = re.sub("T.me/.*" , "" , caption)
         for i in black:
             caption = re.sub(i, "" , caption)
         
@@ -149,10 +149,10 @@ async def hello1(event):
         caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
         caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
 
-        caption = re.sub("@.*" , "@X3Links" , caption)
-        caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
-        caption = re.sub("t.me/.*" , "@X3Links" , caption)
-        caption = re.sub("T.me/.*" , "@X3Links" , caption)
+        caption = re.sub("@.*" , "" , caption)
+        caption = re.sub("https://t.me/.*" , "" , caption)
+        caption = re.sub("t.me/.*" , "" , caption)
+        caption = re.sub("T.me/.*" , "" , caption)
         for i in black:
             caption = re.sub(i, "" , caption)
         
@@ -220,10 +220,10 @@ async def hello1(event):
         caption = re.sub("𝗙𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗶𝗻𝘀𝘁𝗮 𝗽𝗮𝗴𝗲👇" , "" , caption)
         caption = re.sub("https://www.instagram.com/haq.sebakchodi/" , "" , caption)
 
-        caption = re.sub("@.*" , "@X3Links" , caption)
-        caption = re.sub("https://t.me/.*" , "@X3Links" , caption)
-        caption = re.sub("t.me/.*" , "@X3Links" , caption)
-        caption = re.sub("T.me/.*" , "@X3Links" , caption)
+        caption = re.sub("@.*" , "" , caption)
+        caption = re.sub("https://t.me/.*" , "" , caption)
+        caption = re.sub("t.me/.*" , "" , caption)
+        caption = re.sub("T.me/.*" , "" , caption)
         for i in black:
             caption = re.sub(i, "" , caption)
         
